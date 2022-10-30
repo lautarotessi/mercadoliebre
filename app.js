@@ -9,11 +9,11 @@ app.use(express.static(publicDir));
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '/views/home.html'));
 });
-
+/*
 app.post('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '/views/home.html'));
 });
-
+*/
 app.get('/registro', (req, res) => {
 	res.sendFile(path.join(__dirname, '/views/register.html'));
 });
@@ -27,8 +27,12 @@ app.listen(3000, () =>
 	console.log('Servidor corriendo')
 );
 */
+
 app.listen(process.env.PORT || 3000, () =>
 	console.log('Servidor corriendo')
 );
 
+http.listen((process.env.PORT || 5000), function(){
+  console.log('listening on *:5000');
+});
 
