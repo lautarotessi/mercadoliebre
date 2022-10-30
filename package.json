@@ -1,0 +1,17 @@
+{
+  "name": "mercadoliebre",
+  "version": "1.0.0",
+  "description": "MercadoLiebre",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "mercadoliebre"
+  ],
+  "author": "Lautaro Tessi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

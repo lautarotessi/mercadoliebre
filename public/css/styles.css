@@ -1,0 +1,439 @@
+ /* Tipografía: Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+/*
+Paleta de colores
+Amarillo: #EAC926;
+Azul: #03264C;
+Celeste: #1259c3;
+Gris oscuro: #666;
+Gris claro: #ebebeb;
+Verde: #39b54a;
+*/
+
+body *{	/* Todo el documento tendrá, inicialmente, tipografía Roboto 12px */
+	font-family: Roboto;
+	font-weight: 400; /* Normal */
+	font-size: 12px;
+	display: block;
+	margin: 0px ;
+	padding: 0px ;
+	box-sizing: border-box ;
+}
+
+p{	/* Se ve que el normalize.css no le elimina los márgenes defaults, así que se los pone a cero. */
+	padding: 0px;
+	margin: 0px;
+}
+
+/***************************************** HEADER ***********************************************/
+/* Color de fondo del header*/
+header{
+	background-color: #EAC926;
+	padding: 1rem;	/* Deja una pequeña separación alrededor del elemento, pero conserva el color */
+}
+
+header #logo{	/* Se limita el ancho, haciéndolo relativo a la pantalla si es inferior a 300px */
+	/*
+	max-width: 150px;
+	padding-bottom: 1rem;
+	*/
+}
+
+a{	/* Quitamos el subrayado y el color de los enlaces */
+	text-decoration: none;
+}
+a:visited{
+	color: black;
+}
+
+ul{	/* Eliminamos la sangría automática de las listas */
+	padding-left: 0px;
+}
+
+#encabezado{	/* Abarca 3 ítems: logo, barra de búsqueda y eslogan. Se define como flexbox*/
+	display: flex;
+	flex-wrap: wrap;	/* Adapta el tamaño de los ítems al ancho del contenedor */
+	width: 100%;
+	align-items: center;	/* Centra los items verticalmente respecto al div */
+	justify-content: space-between;	/* Ubica horizontalmente los ítems en los extremos del contenedor */
+	margin-bottom: 2rem;
+}
+
+#encabezado>*{
+	/*No se le da el 50% para darle espacio entre ítems. Si se le diera espacio y se pone width al 50%, el segundo ítem no entra y salta a la línea siguiente
+	Al dársele un valor, por más que tengamos el flex-wrap en wrap, si la suma de los ítems supera el 100%, dejan un ítem para la siguiente línea,
+	como es el caso del eslógan*/
+	width: 48%;	
+}
+
+#searchbar{	/* Se cambia el display general de display: block a inline-block para poner la lupa al lado de la barra */
+	display: flex;
+	height: 40px;
+}
+
+#searchbar input[type=text]{	/* Le damos más ancho al input de texto */
+	/*width: 200px;*/
+	flex-grow: 1;	/* El input va a ocupar todo el espacio del contenedor, por no especificar otro ítem en flex-grow */
+	border: none;
+	border-radius: 5px 0 0 5px;
+	padding-left: 1rem;
+	width: 100%; /* Con esto hacemos que el ancho no sea fijo y se adapte al del contenedor */
+}
+
+#lupa-container{
+	/* Al ser un flex-item y no especificarse, flex-grow=0, por lo que no ocupa espacio adicional */
+	background-color: white;
+	border: none;	
+	padding: 0.1rem;
+	border-radius: 0 5px 5px 0;
+	display: flex;	/* necesario para centrar verticalmente la lupa, que es hija de este container */
+}
+
+#searchbar .fa-magnifying-glass{	/* El otro elemento se ubicará superpuesto.*/
+	align-self: center;
+	padding: 5px;
+	color: #666;
+}
+
+#eslogan{
+	text-align: center;
+	padding: .5rem 0;
+	width: 100%; /* Esto sobreescribe el valor de 50% que tienen los hijos de #encabezado */
+}
+
+.burger-menu{
+	text-align: center;
+}
+
+.burger-menu i{	/* Menú de la hamburguesa, relleno de azul y con bordes redondeados */
+	color: white;
+	border: 12px solid #1259c3;
+	background-color: #1259c3;
+	border-radius: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+nav ul{	/* Mobile first: no muestra el nav */
+	display: none;
+}
+
+nav .burger-menu{
+	display: block;	/* Devuelve el estado cuando se establece en none */
+}
+
+/***************************************** MAIN ***********************************************/
+main{
+	background-color: #ebebeb;
+}
+
+#container{
+	width: 90vw;
+	margin: 0	 auto;	/* Para centrar horizontalmente, se define un ancho (menor a 100%) y margin: auto */
+}
+
+/* Cambiamos valores que vienen predeterminados */
+img{
+	width: 100%;
+}
+
+section{
+	display: flex;
+	flex-wrap: wrap; /* No ajusta el tamaño de los hijos, si no entra, a la línea siguiente */
+}
+
+article{
+	/* Mobile first: por default, al estar seteado wrap, un solo item por fila */
+	margin: 5px; /* Separación entre artículos */
+	background-color: white;
+	box-sizing: border-box;	/* Los márgenes irán "hacia adentro" */
+	padding: 15px;
+	border: 1px solid #ebebeb;
+}
+
+article:hover{
+	-webkit-box-shadow: 0px 0px 10px rgb(100, 100, 100);	/* Sombra: Sin desplazameiento, blur radius 10px */
+	-moz-box-shadow: 0px 0px 10px rgb(100, 100, 100);
+	box-shadow : 0px 0px 10px rgb(100, 100, 100);
+}
+
+.detalle{
+	position: relative;	/*	Es importante definir un posicionamiento relativo al padre, para que cuando los hijos
+												 	Tengan absoluto lo hagan respecto a la caja de detalle*/
+}
+
+.fa-truck {	/* se reemplaza el anidaje de elementos sólo por el nombre del elemento que refiere al camión */
+	display: block;
+	color: #39b54a;
+	font-size: 16px;
+	padding-top: 15px;	/* Esto es artesanal, pero al menos hasta que implementemos flex... */
+  padding-left: 5px;
+	width: 30px ;
+	height: 30px ;
+	border: 1px solid #39b54a ;
+	background-color: #FFF ;
+	border-radius: 50% ;
+	position: absolute ;
+	right: 20px;	/* Estos dos sólo funcionan para position: absolute */
+	top: -15px;
+	transition: .5s;
+}
+
+.fa-truck:hover{
+	transform: rotateZ(-90deg);
+}
+
+.precios, .descuentos{	/* Se cambia el comportamiento default (block) para que se vean en la misma línea (inline-block) */
+	display: inline-block;
+}
+
+.precios{
+	padding-top: 20px;	/* Al ser posicionamiento relativo, no afecta al camión y se separa de la línea superior del container */
+	font-size: 18px;
+} 
+
+.descuentos{
+	font-size: 16px;
+	color: #39b54a;
+	padding-left: 0.5rem;
+}
+
+.titulares{
+	font-size: 24px;
+	font-weight: 700; /* Bold */
+	color: #666;
+	padding: 1rem 0;
+}
+
+.descripciones{
+	display: none; /* Como es mobile-first, por default se establece como oculto */
+	padding-top: 1rem;
+	font-size: 16px;
+	color: #666;
+}
+
+/************************************* FORMULARIOS ********************************************/
+main form{
+	background-color: #ebebeb;
+	width: 100%;
+	padding: 20px 20px;
+	display: flex;
+  flex-direction: column;
+}
+
+.elem-form{
+	margin-bottom: 1rem;
+	width: 100%;
+}
+
+.titulos{
+	font-size: 14px;
+	margin-bottom: .3rem;
+}
+
+.elem-form label{
+	margin-bottom: 5px;
+} 
+
+main form input:not(form input[type=radio], form input[type=checkbox]){
+  background-color: white;
+	/*border: 2px solid currentcolor;*/
+	border: none;	
+	border-radius: 5px;
+	width: 100%;
+	padding: 10px;
+}
+
+#perfildeusuario{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+input[type=radio]{
+	margin: 0px 10px;
+}
+
+#check-categorias{
+	display: flex;
+	flex-direction: column;
+}
+
+#check-categorias label{
+	display: flex;
+}
+
+input[type=checkbox]{
+	margin-right: 10px;
+}
+
+#botones{
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+#botones>button{
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: #1259c3;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+#boton-login:hover{
+	background-color: #0022AA;
+}
+
+button:hover{
+	cursor: pointer;
+}
+ 
+
+/********** Validaciones ************/
+main form input:focus, form select:focus{	/* No sé por qué la pone de color rojo*/
+	outline: none;
+	/*border: 2px solid currentcolor;*/
+}
+
+main form input:not(:placeholder-shown):valid {
+	background-color:#e8f0fd;
+	/*border: 2px solid deepskyblue;*/
+}
+
+main form input:not(:placeholder-shown):invalid, form input:required{
+	background-color:peachpuff;
+	/*border: 2px solid tomato;*/
+}
+
+
+/**************************************** FOOTER **********************************************/
+footer{	/* Se distancia del elemento superior */
+	margin-top: 40px;
+}
+
+footer *{	/* Todos los elementos que contiene el footer se centran horizontalmente */
+	text-align: center;
+}
+
+.box-footer{	/* Establece una separación entre bloques */
+	padding: 20px 0px ;
+	margin: 0 20px;
+}
+
+.titulo-footer{	/* Se da formato a los títulos */
+	font-size: 1.3rem;
+	font-weight: 700;
+}
+
+.box-footer i{
+	padding-bottom: 1rem;
+	color: #1259c3;
+}
+
+#bloques-footer{
+	margin-bottom: 2rem;
+}
+
+#bloques-footer .fa-solid:hover{
+	color: #0022AA;
+}
+
+/************************************ DISEÑO ADAPTATIVO ******************************************/
+@media (min-width: 361px){	/* Tablets */
+	nav, .descripciones{
+		display: block; /* Se muestra el elemento oculto para celulares */
+	}
+
+	article{	/* Muestra 2 artículos para la versión tablets */
+		flex: 1 0 45%; /* flex-grow=1 (se distribuyen igualmente los elementos). flex-basis=45% (menos de 50% para dar lugar a los márgenes)  */
+	}
+
+	.descripciones{
+		visibility: hidden;
+	}
+
+	.descripciones:hover{
+		visibility: visible;
+	}
+	article:hover .descripciones { visibility: visible; }	
+
+	#encabezado>*{
+		width: 31%;
+	}
+
+	nav .burger-menu{
+		display: none;
+	}
+
+	nav ul{
+		display: flex;	/* Esto servirá para sus hijos, pero sirve para quitarle el none que va por default */
+	}
+
+	nav{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	#variosbar li{
+		padding-left: 10px;
+	}
+
+	#loginbar li{
+		padding-right: 10px;
+	}
+
+	#formulario-login #botones {
+		max-width: 400px;
+		display: flex;
+		align-self: center;
+	}
+
+}
+
+@media (min-width: 769px){	/* Desktop */
+	nav, .descripciones{ 
+		display: block; /* Se muestra el elemento oculto para celulares */
+	}
+
+	article{	/* Muestra 4 artículos para la versión desktop */
+		flex: 1 0 22%; /* flex-grow=1 (se distribuyen igualmente los elementos). flex-basis=22%  (menos de 25% para dar lugar a los márgenes)  */
+	}
+	
+	nav{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	main form{
+		width: 800px;
+		margin: auto;
+	}
+
+	#formulario-registro #botones{
+		justify-content: space-between;
+	}
+
+	#formulario-registro #botones>button{
+		width: 45%;
+	}
+
+	#formulario-login #botones {
+		max-width: 400px;
+		display: flex;
+		align-self: center;
+	}
+
+	#bloques-footer{	/* Muestra a los tres bloques en la misma línea */
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	footer>p{
+		text-align: left;
+	}
+}
