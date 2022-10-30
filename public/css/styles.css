@@ -33,13 +33,6 @@ header{
 	padding: 1rem;	/* Deja una pequeña separación alrededor del elemento, pero conserva el color */
 }
 
-header #logo{	/* Se limita el ancho, haciéndolo relativo a la pantalla si es inferior a 300px */
-	/*
-	max-width: 150px;
-	padding-bottom: 1rem;
-	*/
-}
-
 a{	/* Quitamos el subrayado y el color de los enlaces */
 	text-decoration: none;
 }
